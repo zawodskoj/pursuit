@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <WeaverFiles Include="$(SolutionDir)Pursuit.Fody\bin\$(Configuration)\netstandard2.0\Pursuit.Fody.dll" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Fody" Version="6.6.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="FParsec" Version="1.1.1" />
+      <PackageReference Include="FSharp.Core" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Pursuit.Fody\Pursuit.Fody.csproj" />
+      <ProjectReference Include="..\Pursuit\Pursuit.csproj" />
+    </ItemGroup>
+
+</Project>
